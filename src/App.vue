@@ -10,7 +10,6 @@ import { RouterLink, RouterView } from 'vue-router'
 body {
   background-color: black !important;
   min-width: 100vw;
-  /* aspect-ratio: 16 / 9; */
   font-size: 20px;
 }
 </style>

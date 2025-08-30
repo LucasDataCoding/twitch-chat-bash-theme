@@ -5,7 +5,7 @@
     </div>
 
     <div class="distribution">
-      {{ distribution.toUpperCase() }}
+      {{ distribution }}
     </div>
 
     <div class="sufix">
