@@ -1,26 +1,23 @@
 <template>
   <div class="wrapper-top-title">
     <div class="path">
-      {{ path }}
+      {{ topTexts.left }}
     </div>
 
     <div class="distribution">
-      {{ distribution }}
+      {{ topTexts.middle }}
     </div>
 
     <div class="sufix">
-      {{ sufix }}
+      {{ topTexts.right }}
     </div>
   </div>
 </template>
 
 
 <script lang="ts" setup>
+import { topTexts } from '@/contants'
 import { ref } from 'vue'
-
-const path = ref('lucas@datacoding')
-const distribution = ref('!chatcode')
-const sufix = ref('~')
 </script>
 
 
