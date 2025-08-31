@@ -5,14 +5,13 @@
     <div class="wrapper-chat-content">
       <TopTitle />
 
-      <div style="margin-top: 0.5ch"></div>
-
       <div class="wrapper-chat" ref="chatContainer">
         <ChatMessage
           v-for="(message, i) in messagesOrdered"
           :key="i"
           :chatter-name="message.username"
           :message="message.message"
+          :message-color="message.message_color"
           :channel="message.channel"
           prefix="$"
         />
@@ -34,6 +33,7 @@ interface ChatMessage {
   channel: string
   username: string
   message: string
+  message_color: string
   timestamp?: string
   type?: string
 }
@@ -148,12 +148,12 @@ onUnmounted(() => {
   }
 
   .wrapper-chat-content {
-    $padding-chat-size: 2rem;
-    padding: calc($padding-chat-size/2) $padding-chat-size $padding-chat-size $padding-chat-size;
+    $padding-chat-size: 1rem;
+    padding: $padding-chat-size $padding-chat-size calc($padding-chat-size * 2) $padding-chat-size;
   }
 
   .wrapper-chat {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     color: whitesmoke;
 
     display: flex;

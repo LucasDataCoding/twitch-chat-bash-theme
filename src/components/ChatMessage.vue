@@ -4,7 +4,10 @@
       {{ prefix }}
     </span>
 
-    {{ chatterName }} : {{ message }}
+    <span :style="{ color: messageColor || 'white' }" class="chatter-name"> {{ chatterName }} </span
+    >:
+
+    {{ message }}
   </div>
 </template>
 
@@ -16,6 +19,7 @@ const props = defineProps({
   prefix: String,
   chatterName: String,
   message: String,
+  messageColor: String,
 })
 </script>
 
@@ -23,5 +27,9 @@ const props = defineProps({
 <style lang="scss" scoped>
 .prefix {
   color: green;
+}
+
+.chatter-name {
+  margin-left: 0.5ch;
 }
 </style>
