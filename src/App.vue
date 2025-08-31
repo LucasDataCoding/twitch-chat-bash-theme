@@ -8,7 +8,6 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style>
 body {
-  background-color: black !important;
   min-width: 100vw;
   font-size: 20px;
 }

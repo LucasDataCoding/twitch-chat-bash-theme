@@ -1,19 +1,24 @@
 <template>
-  <div>
-    <TopTitle />
+  <div class="wrapper-chat-view">
+    <img src="../assets/themes/linux/top-bar.png" alt="Imagem da barra superior do chat" />
 
-    <div style="margin-top: 0.5ch"></div>
+    <div class="wrapper-chat-content">
+      <TopTitle />
 
-    <div class="wrapper-chat" ref="chatContainer">
-      <ChatMessage
-        v-for="(message, i) in messagesOrdered"
-        :key="i"
-        :chatter-name="message.username"
-        :message="message.message"
-        :channel="message.channel"
-      />
+      <div style="margin-top: 0.5ch"></div>
 
-      <div style="margin-top: 8ch"></div>
+      <div class="wrapper-chat" ref="chatContainer">
+        <ChatMessage
+          v-for="(message, i) in messagesOrdered"
+          :key="i"
+          :chatter-name="message.username"
+          :message="message.message"
+          :channel="message.channel"
+          prefix="$"
+        />
+
+        <div style="margin-top: 8ch"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -124,19 +129,43 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.wrapper-chat {
-  background-color: black;
-  color: whitesmoke;
+.wrapper-chat-view {
+  border: 3px solid #202020;
+  border-radius: 0.5rem;
+
+  background-color: black !important;
 
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
 
-  height: 100vh;
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
 
-  $padding: 1rem;
+  img {
+    height: 4rem;
+    width: 100%;
+  }
 
-  padding-left: $padding;
-  padding-right: $padding;
+  .wrapper-chat-content {
+    $padding-chat-size: 2rem;
+    padding: calc($padding-chat-size/2) $padding-chat-size $padding-chat-size $padding-chat-size;
+  }
+
+  .wrapper-chat {
+    background-color: black;
+    color: whitesmoke;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+
+    height: 100vh;
+
+    $padding: 1rem;
+
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 }
 </style>
