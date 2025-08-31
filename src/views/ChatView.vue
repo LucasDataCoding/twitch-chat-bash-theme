@@ -149,12 +149,15 @@ onUnmounted(() => {
 
   .wrapper-chat-content {
     $padding-chat-size: 1rem;
-    padding: $padding-chat-size $padding-chat-size calc($padding-chat-size * 2) $padding-chat-size;
+    padding: calc($padding-chat-size * 0.7) $padding-chat-size calc($padding-chat-size * 2)
+      $padding-chat-size;
   }
 
   .wrapper-chat {
     background-color: rgba(0, 0, 0, 0);
     color: whitesmoke;
+
+    margin-bottom: 10rem;
 
     display: flex;
     flex-direction: column;
