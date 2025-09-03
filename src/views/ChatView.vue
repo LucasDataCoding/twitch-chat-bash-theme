@@ -1,9 +1,15 @@
 <template>
   <div class="wrapper-chat-view">
-    <img src="../assets/themes/linux/top-bar.png" alt="Imagem da barra superior do chat" />
+    <img src="../../public/themes/mine/top-bar.png" alt="Imagem da barra superior do chat" />
 
-    <div class="wrapper-chat-content">
-      <TopTitle />
+    <div
+      class="wrapper-chat-content"
+      :style="{
+        // background: 'black',
+        background: 'url(../../public/themes/mine/bg-chat.png)',
+      }"
+    >
+      <TopTitle class="top-title theme-mine" />
 
       <div class="wrapper-chat" ref="chatContainer">
         <ChatMessage
@@ -130,10 +136,13 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .wrapper-chat-view {
+  $padding-chat-size: 1rem;
+  $p-right: $padding-chat-size;
+  $p-bottom: calc($padding-chat-size * 2);
+  $p-left: $padding-chat-size;
+
   border: 3px solid #202020;
   border-radius: 0.5rem;
-
-  background-color: black !important;
 
   display: flex;
   flex-direction: column;
@@ -148,9 +157,7 @@ onUnmounted(() => {
   }
 
   .wrapper-chat-content {
-    $padding-chat-size: 1rem;
-    padding: calc($padding-chat-size * 0.7) $padding-chat-size calc($padding-chat-size * 2)
-      $padding-chat-size;
+    padding-bottom: $p-bottom;
   }
 
   .wrapper-chat {
@@ -165,10 +172,25 @@ onUnmounted(() => {
 
     height: 100vh;
 
-    $padding: 1rem;
+    padding-left: $p-left;
+    padding-right: $p-right;
+  }
 
-    padding-left: $padding;
-    padding-right: $padding;
+  .top-title {
+    padding: 0.5rem 1rem;
+    &.theme-mine {
+      & > * {
+        font-weight: bold;
+      }
+
+      & :deep(.path) {
+        color: #352d28;
+      }
+
+      & :deep(.distribution) {
+        color: #5d3e27 !important;
+      }
+    }
   }
 }
 </style>
