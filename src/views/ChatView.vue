@@ -5,12 +5,7 @@
       alt="Imagem da barra superior do chat"
     />
 
-    <div
-      class="wrapper-chat-content"
-      :style="{
-        background: 'url(../../public/themes/mine_herobrine/bg-chat.png)',
-      }"
-    >
+    <div class="wrapper-chat-content">
       <TopTitle class="top-title theme-mine" />
 
       <div class="wrapper-chat" ref="chatContainer">
@@ -159,6 +154,7 @@ onUnmounted(() => {
   }
 
   .wrapper-chat-content {
+    background: url(../../public/themes/mine_herobrine/bg-chat.png);
     background-repeat: no-repeat !important;
     background-position: center center !important;
 
