@@ -7,10 +7,6 @@
     <div class="distribution">
       {{ topTexts.middle }}
     </div>
-
-    <div class="sufix">
-      {{ topTexts.right }}
-    </div>
   </div>
 </template>
 
@@ -31,11 +27,12 @@ import { ref } from 'vue'
   }
 
   .path {
-    color: #5fa951;
+    color: #fcfefe !important;
   }
 
   .distribution {
-    color: #a951a9;
+    color: #977dff !important;
+    font-weight: bold;
   }
 
   .sufix {

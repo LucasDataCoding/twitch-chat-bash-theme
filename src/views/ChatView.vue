@@ -1,12 +1,14 @@
 <template>
   <div class="wrapper-chat-view">
-    <img src="../../public/themes/mine/top-bar.png" alt="Imagem da barra superior do chat" />
+    <img
+      src="../../public/themes/mine_herobrine/top-bar.png"
+      alt="Imagem da barra superior do chat"
+    />
 
     <div
       class="wrapper-chat-content"
       :style="{
-        // background: 'black',
-        background: 'url(../../public/themes/mine/bg-chat.png)',
+        background: 'url(../../public/themes/mine_herobrine/bg-chat.png)',
       }"
     >
       <TopTitle class="top-title theme-mine" />
@@ -19,7 +21,7 @@
           :message="message.message"
           :message-color="message.message_color"
           :channel="message.channel"
-          prefix="$"
+          prefix=""
         />
 
         <div style="margin-top: 8ch"></div>
@@ -157,6 +159,9 @@ onUnmounted(() => {
   }
 
   .wrapper-chat-content {
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+
     padding-bottom: $p-bottom;
   }
 
@@ -178,19 +183,6 @@ onUnmounted(() => {
 
   .top-title {
     padding: 0.5rem 1rem;
-    &.theme-mine {
-      & > * {
-        font-weight: bold;
-      }
-
-      & :deep(.path) {
-        color: #352d28;
-      }
-
-      & :deep(.distribution) {
-        color: #5d3e27 !important;
-      }
-    }
   }
 }
 </style>
