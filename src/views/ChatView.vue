@@ -1,9 +1,6 @@
 <template>
   <div class="wrapper-chat-view">
-    <img
-      src="../../public/themes/mine_herobrine/top-bar.png"
-      alt="Imagem da barra superior do chat"
-    />
+    <img src="../../public/themes/hollow1/top-bar.png" alt="Imagem da barra superior do chat" />
 
     <div class="wrapper-chat-content">
       <TopTitle class="top-title theme-mine" />
@@ -154,7 +151,7 @@ onUnmounted(() => {
   }
 
   .wrapper-chat-content {
-    background: url(../../public/themes/mine_herobrine/bg-chat.png);
+    background: url(../../public/themes/hollow1/bg-chat.png);
     background-repeat: no-repeat !important;
     background-position: center center !important;
 
