@@ -1,0 +1,46 @@
+<template>
+  <Card style="width: 25rem; overflow: hidden" class="wrapper-card">
+    <template #header>
+      <img alt="imagem tema" :src="configStore.loadThemeImagesPath(theme.path).bgTop" />
+    </template>
+
+    <template #title>{{ theme.name }}</template>
+
+    <template #footer>
+      <div class="flex gap-4 mt-1">
+        <Button
+          class="w-full"
+          @click="isCurrentTheme ? '' : configStore.setTheme(theme)"
+          :disabled="isCurrentTheme"
+        >
+          <span style="font-weight: bold">
+            {{ isCurrentTheme ? 'Tema Atual' : 'Usar Tema' }}
+          </span>
+        </Button>
+      </div>
+    </template>
+  </Card>
+</template>
+
+<script lang="ts" setup>
+import type { ITheme } from '@/interfaces/themes'
+import { useConfigStore } from '@/stores/config'
+import { computed, defineProps, PropType } from 'vue'
+
+const props = defineProps({
+  theme: {
+    required: true,
+    type: Object as PropType<ITheme>,
+  },
+})
+
+const configStore = useConfigStore()
+
+const isCurrentTheme = computed(() => configStore.configs?.theme.path === props.theme.path)
+</script>
+
+<style lang="scss" scoped>
+.wrapper-card {
+  border: 1px solid var(--p-primary-300);
+}
+</style>
