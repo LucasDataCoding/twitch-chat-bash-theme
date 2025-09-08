@@ -7,7 +7,7 @@ import PrimeVue from 'primevue/config'
 import App from './App.vue'
 import router from './router'
 import Aura from '@primeuix/themes/aura'
-import { Button, Card, Tab, TabList, TabPanel, TabPanels, Tabs } from 'primevue'
+import { Button, Card, Tab, TabList, TabPanel, TabPanels, Tabs, InputText } from 'primevue'
 import { definePreset } from '@primeuix/themes'
 import './style.css'
 
@@ -48,4 +48,6 @@ app.component('Tab', Tab)
 app.component('TabPanels', TabPanels)
 app.component('TabPanel', TabPanel)
 app.component('Card', Card)
+app.component('InputText', InputText)
+
 app.mount('#app')
