@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper-top-title">
     <div class="path">
-      {{ topTexts.left }}
+      {{ configs.configs?.name }}
     </div>
 
     <div class="distribution">
-      {{ topTexts.middle }}
+      {{ configs.configs?.highlightText }}
     </div>
   </div>
 </template>
@@ -13,7 +13,10 @@
 
 <script lang="ts" setup>
 import { topTexts } from '@/contants'
+import { useConfigStore } from '@/stores/config'
 import { ref } from 'vue'
+
+const configs = useConfigStore()
 </script>
 
 

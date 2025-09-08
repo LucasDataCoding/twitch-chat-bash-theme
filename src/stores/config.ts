@@ -151,6 +151,36 @@ export const useConfigStore = defineStore('configs', () => {
     saveConfigs(updatedConfigs)
   }
 
+  function setName(payload: string) {
+    if (!configs.value) {
+      console.error('❌ Configurações não carregadas ainda')
+      return
+    }
+
+    const updatedConfigs = {
+      ...configs.value,
+      name: payload,
+    }
+
+    console.log('setando nome', updatedConfigs)
+
+    saveConfigs(updatedConfigs)
+  }
+
+  function setHighlightText(payload: string) {
+    if (!configs.value) {
+      console.error('❌ Configurações não carregadas ainda')
+      return
+    }
+
+    const updatedConfigs = {
+      ...configs.value,
+      highlightText: payload,
+    }
+
+    saveConfigs(updatedConfigs)
+  }
+
   const generalPathThemes = '/themes/'
 
   function loadThemeImagesPath(path: string) {
@@ -190,5 +220,7 @@ export const useConfigStore = defineStore('configs', () => {
     loadInitialConfigs,
     connectWebSocket,
     loadThemeImagesPath,
+    setName,
+    setHighlightText,
   }
 })

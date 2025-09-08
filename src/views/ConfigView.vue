@@ -21,10 +21,18 @@
           <TabPanel value="1">
             <form class="wrapper-form flex justify-center flex-col gap-4 max-w-[600px]">
               <div class="flex flex-col gap-1">
-                <InputText name="username" type="text" placeholder="Username" />
+                <span class="mb-1">Nome</span>
+
+                <InputText v-model.trim="name" name="Nome" type="text" placeholder="Nome" />
               </div>
               <div class="flex flex-col gap-1">
-                <InputText name="email" type="text" placeholder="Email" />
+                <span class="mb-1">Texto Destacado</span>
+                <InputText
+                  v-model="highlightText"
+                  name="Mensagem Destacada"
+                  type="text"
+                  placeholder="Mensagem Destacada"
+                />
               </div>
             </form>
           </TabPanel>
@@ -39,9 +47,37 @@ import NavBarTop from '@/components/NavBarTop.vue'
 import ThemeCard from '@/components/ThemeCard.vue'
 import { themes } from '@/constants/themes'
 import { useConfigStore } from '@/stores/config'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const configsStore = useConfigStore()
+
+const timeoutName = ref()
+const timeoutHighlightText = ref()
+
+const name = computed({
+  get: () => configsStore.configs?.name,
+  set: (val: string) => {
+    if (timeoutName.value) {
+      clearTimeout(timeoutName.value)
+    }
+
+    timeoutName.value = setTimeout(() => configsStore.setName(val), 1000)
+  },
+})
+
+const highlightText = computed({
+  get: () => configsStore.configs?.highlightText,
+  set: (val: string) => {
+    if (timeoutHighlightText.value) {
+      clearTimeout(timeoutHighlightText.value)
+    }
+
+    timeoutHighlightText.value = setTimeout(() => configsStore.setHighlightText(val), 1000)
+  },
+})
+
+highlightText
 </script>
 
 <style lang="scss" scoped>
@@ -64,5 +100,9 @@ const configsStore = useConfigStore()
   & > :not(:last-child) {
     margin-bottom: 1rem;
   }
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
 }
 </style>
