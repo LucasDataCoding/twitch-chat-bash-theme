@@ -29,8 +29,9 @@
 
 <script lang="ts" setup>
 import type { IChatMessage } from '@/interfaces/messages'
-import { defineProps, nextTick, onMounted, PropType, ref, watch } from 'vue'
+import { defineProps, nextTick, onMounted, ref, watch } from 'vue'
 import TopTitle from './TopTitle.vue'
+import type { PropType } from 'vue'
 
 const props = defineProps({
   messages: Object as PropType<IChatMessage[]>,

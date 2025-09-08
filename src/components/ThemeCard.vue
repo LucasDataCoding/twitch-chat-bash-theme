@@ -25,7 +25,8 @@
 <script lang="ts" setup>
 import type { ITheme } from '@/interfaces/themes'
 import { useConfigStore } from '@/stores/config'
-import { computed, defineProps, PropType } from 'vue'
+import { computed, defineProps } from 'vue'
+import type { PropType } from 'vue'
 
 const props = defineProps({
   theme: {
