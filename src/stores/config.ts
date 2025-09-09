@@ -57,7 +57,7 @@ export const useConfigStore = defineStore('configs', () => {
     }
 
     websocket.onmessage = (event) => {
-      console.log('📨 Mensagem WebSocket recebida:', event.data)
+      console.log('📨 Mensagem WebSocket RAW:', event.data)
 
       try {
         const data = JSON.parse(event.data)
@@ -66,15 +66,22 @@ export const useConfigStore = defineStore('configs', () => {
         if (data.type === 'config_update') {
           console.log('🔄 Atualizando configurações via WebSocket')
           configs.value = data.configs
-        } else if (data.type === 'chat_message' || (data.username && data.message)) {
-          console.log('💬 Nova mensagem de chat recebida')
+        } else if (data.type === 'chat_message') {
+          console.log('💬 Nova mensagem de chat recebida:', data)
           chatMessages.value.unshift(data)
 
           if (chatMessages.value.length > 100) {
             chatMessages.value = chatMessages.value.slice(0, 100)
           }
+        } else if (data.username && data.message) {
+          console.log('💬 Mensagem de chat (formato alternativo):', data)
+          // Formato alternativo caso o type não esteja sendo enviado
+          chatMessages.value.unshift({
+            ...data,
+            type: 'chat_message',
+          })
         } else {
-          console.log('📦 Tipo de mensagem desconhecido:', data.type)
+          console.log('📦 Tipo de mensagem desconhecido:', data)
         }
       } catch (error) {
         console.error('❌ Erro ao processar mensagem WebSocket:', error)
@@ -137,7 +144,7 @@ export const useConfigStore = defineStore('configs', () => {
     }
   }
 
-  function setTheme(themePayload: ITheme) {
+  function addSingleConfig(payload: { [x: string]: any }) {
     if (!configs.value) {
       console.error('❌ Configurações não carregadas ainda')
       return
@@ -145,13 +152,13 @@ export const useConfigStore = defineStore('configs', () => {
 
     const updatedConfigs = {
       ...configs.value,
-      theme: themePayload,
+      ...payload,
     }
 
     saveConfigs(updatedConfigs)
   }
 
-  function setName(payload: string) {
+  function addChatConfig(payload: { [x: string]: string }) {
     if (!configs.value) {
       console.error('❌ Configurações não carregadas ainda')
       return
@@ -159,23 +166,10 @@ export const useConfigStore = defineStore('configs', () => {
 
     const updatedConfigs = {
       ...configs.value,
-      name: payload,
-    }
-
-    console.log('setando nome', updatedConfigs)
-
-    saveConfigs(updatedConfigs)
-  }
-
-  function setHighlightText(payload: string) {
-    if (!configs.value) {
-      console.error('❌ Configurações não carregadas ainda')
-      return
-    }
-
-    const updatedConfigs = {
-      ...configs.value,
-      highlightText: payload,
+      CHAT: {
+        ...configs.value.CHAT,
+        ...payload,
+      },
     }
 
     saveConfigs(updatedConfigs)
@@ -214,13 +208,12 @@ export const useConfigStore = defineStore('configs', () => {
     error,
     chatMessages,
     messagesOrdered,
-    setTheme,
     saveConfigs,
     themeFolderPath,
     loadInitialConfigs,
     connectWebSocket,
     loadThemeImagesPath,
-    setName,
-    setHighlightText,
+    addSingleConfig,
+    addChatConfig,
   }
 })

@@ -13,7 +13,7 @@
       <div class="flex gap-4 mt-1">
         <Button
           class="w-full"
-          @click="isCurrentTheme ? '' : configStore.setTheme(theme)"
+          @click="isCurrentTheme ? '' : configStore.addSingleConfig({ theme })"
           :disabled="isCurrentTheme"
         >
           <span style="font-weight: bold">
