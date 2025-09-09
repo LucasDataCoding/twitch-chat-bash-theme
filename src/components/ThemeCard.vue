@@ -1,5 +1,8 @@
 <template>
-  <Card style="width: 25rem; overflow: hidden" class="wrapper-card">
+  <Card
+    class="wrapper-card overflow-hidden w-full"
+    :style="`background: url(${configStore.loadThemeImagesPath(theme.path).bgChat})`"
+  >
     <template #header>
       <img alt="imagem tema" :src="configStore.loadThemeImagesPath(theme.path).bgTop" />
     </template>

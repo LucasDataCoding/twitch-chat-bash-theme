@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen overflow-hidden">
     <ChatBox
       v-if="!configsStore.isLoading"
       :bg-chat="configsStore.themeFolderPath.bgChat"

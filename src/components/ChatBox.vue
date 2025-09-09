@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper-chat-view h-full">
+  <div class="wrapper-chat-view h-screen">
     <img :src="bgTop" alt="Imagem da barra superior do chat" class="w-full min-w-full" />
 
     <div
-      class="wrapper-chat-content"
+      class="wrapper-chat-content h-full"
       :style="{
         background: `url(${bgChat})`,
       }"
@@ -80,10 +80,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
 
-  height: 100%;
-  max-height: 100vh;
-  overflow: hidden;
-
   img {
     height: 4rem;
     width: 100%;
@@ -105,8 +101,6 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
-
-    height: 100vh;
 
     padding-left: $p-left;
     padding-right: $p-right;

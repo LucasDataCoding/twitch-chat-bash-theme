@@ -5,10 +5,3 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <RouterView />
 </template>
-
-<style>
-body {
-  min-width: 100vw;
-  font-size: 20px;
-}
-</style>
